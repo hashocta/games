@@ -138,15 +138,23 @@
         getLinkBtn.classList.remove(CSS_CLASSES.DISABLED);
         getLinkBtn.classList.add(CSS_CLASSES.SCROLL_PROMPT);
         getLinkBtn.innerHTML = "👇 Scroll Down to Continue 🔍";
+        addFinalButtonContainer();
     }
 
-    function showFinalButton() {
+    function addFinalButtonContainer() {
         if (document.getElementById('final-container')) return;
         
         const bottomContainer = document.createElement("div");
         bottomContainer.id = "final-container";
         bottomContainer.className = CSS_CLASSES.FINAL_CONTAINER;
-
+        
+        const articleEnd = document.querySelector("article");
+        if (articleEnd) {
+            articleEnd.insertAdjacentElement("afterend", bottomContainer);
+        } else {
+            document.body.appendChild(bottomContainer);
+        }
+        
         const finalBtn = document.createElement("button");
         finalBtn.className = CSS_CLASSES.BUTTON;
         finalBtn.id = "final-btn";
@@ -157,6 +165,5 @@
         });
 
         bottomContainer.appendChild(finalBtn);
-        document.body.appendChild(bottomContainer);
     }
 })();
