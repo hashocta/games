@@ -53,9 +53,10 @@
     function addStyleRules() {
         const style = document.createElement('style');
         style.textContent = `
-            .gl-container {
+            .gl-container, .gl-final-container {
                 text-align: center;
                 margin-top: 10px;
+                padding: 10px;
             }
             .gl-button {
                 font-size: 16px;
@@ -77,9 +78,11 @@
             .gl-scroll-prompt {
                 background-color: #28a745;
             }
-            .gl-final-container {
-                text-align: center;
-                margin-top: 20px;
+            @media (max-width: 768px) {
+                .gl-button {
+                    font-size: 14px;
+                    padding: 6px 12px;
+                }
             }
         `;
         document.head.appendChild(style);
